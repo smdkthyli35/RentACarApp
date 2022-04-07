@@ -1,4 +1,6 @@
 using Application;
+using Core.Mailing;
+using Core.Mailing.MailkitImplementations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +32,7 @@ namespace WebAPI
         {
             services.AddAplicationServices();
             services.AddPersistenceServices(Configuration);
+            services.AddSingleton<IMailService, MailkitMailService>();
 
 
             services.AddControllers();
