@@ -32,4 +32,9 @@
     <Folder Include="Features\Models\Rules\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\corePackages\Core.Persistence\Core.Persistence.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
 </Project>
