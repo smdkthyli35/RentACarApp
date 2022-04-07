@@ -17,7 +17,6 @@
     <Folder Include="Features\Brands\Commands\" />
     <Folder Include="Features\Brands\Profiles\" />
     <Folder Include="Features\Brands\Queries\" />
-    <Folder Include="Features\Brands\Rules\" />
     <Folder Include="Features\Cars\Commands\" />
     <Folder Include="Features\Cars\Dtos\" />
     <Folder Include="Features\Cars\Models\" />
@@ -33,6 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\corePackages\Core.CrossCuttingConcerns\Core.CrossCuttingConcerns.csproj" />
     <ProjectReference Include="..\..\corePackages\Core.Persistence\Core.Persistence.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
