@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Persistence.Mappings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,17 @@ namespace Persistence.Contexts
         public BaseDbContext(DbContextOptions<BaseDbContext> options) : base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.ApplyConfiguration(new BrandMap());
+            modelBuilder.ApplyConfiguration(new CarMap());
+            modelBuilder.ApplyConfiguration(new ColorMap());
+            modelBuilder.ApplyConfiguration(new FuelMap());
+            modelBuilder.ApplyConfiguration(new ModelMap());
+            modelBuilder.ApplyConfiguration(new TransmissionMap());
         }
     }
 }
