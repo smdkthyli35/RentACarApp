@@ -17,12 +17,12 @@ namespace Application.Features.Brands.Rules
             _brandRepository = brandRepository;
         }
 
-        public async Task BrandNameCanNotBeDuplicatedWhenInserted(string name)
+        public async Task BrandNameCanNotBeDuplicatedWhenInsertedAndUpdated(string name)
         {
             var result = await _brandRepository.GetListAsync(b => b.Name == name);
             if (result.Items.Any())
             {
-                throw new BusinessException("Bu isimde bir marka adı bulumaktadır!");
+                throw new BusinessException("Bu isimde bir marka adı bulunmamaktadır!");
             }
         }
     }
