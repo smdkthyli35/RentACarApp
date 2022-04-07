@@ -20,7 +20,6 @@ namespace Persistence.Contexts
 
         public BaseDbContext(DbContextOptions<BaseDbContext> options) : base(options)
         {
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
