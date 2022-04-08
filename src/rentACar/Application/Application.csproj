@@ -12,11 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Cars\Commands\" />
-    <Folder Include="Features\Cars\Dtos\" />
-    <Folder Include="Features\Cars\Models\" />
-    <Folder Include="Features\Cars\Profiles\" />
-    <Folder Include="Features\Cars\Rules\" />
     <Folder Include="Features\Cars\Queries\" />
     <Folder Include="Features\Models\Commands\" />
     <Folder Include="Features\Models\Dtos\" />
