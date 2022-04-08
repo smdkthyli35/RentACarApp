@@ -1,4 +1,5 @@
-﻿using Application.Features.Brands.Rules;
+﻿using Application.Features.Brands.Dtos;
+using Application.Features.Brands.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.Mailing;
@@ -13,11 +14,11 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Brands.Commands.CreateBrand
 {
-    public class CreateBrandCommand : IRequest<Brand>
+    public class CreateBrandCommand : IRequest<CreateBrandDto>
     {
         public string Name { get; set; }
 
-        public class CreateBrandCommandHandler : IRequestHandler<CreateBrandCommand, Brand>
+        public class CreateBrandCommandHandler : IRequestHandler<CreateBrandCommand, CreateBrandDto>
         {
             private readonly IBrandRepository _brandRepository;
             private readonly IMapper _mapper;
@@ -32,11 +33,11 @@ namespace Application.Features.Brands.Commands.CreateBrand
                 _mailService = mailService;
             }
 
-            public async Task<Brand> Handle(CreateBrandCommand request, CancellationToken cancellationToken)
+            public async Task<CreateBrandDto> Handle(CreateBrandCommand request, CancellationToken cancellationToken)
             {
                 await _brandBusinessRules.BrandNameCanNotBeDuplicatedWhenInsertedAndUpdated(request.Name);
-                var mappedBrand = _mapper.Map<Brand>(request);
-                var createdBrand = await _brandRepository.AddAsync(mappedBrand);
+                Brand mappedBrand = _mapper.Map<Brand>(request);
+                Brand createdBrand = await _brandRepository.AddAsync(mappedBrand);
 
                 var mail = new Mail
                 {
@@ -46,9 +47,11 @@ namespace Application.Features.Brands.Commands.CreateBrand
                     HtmlBody = "Hey, check the system!"
                 };
 
-                _mailService.SendMail(mail);
+                // _mailService.SendMail(mail);
 
-                return createdBrand;
+                CreateBrandDto createdBrandDto = _mapper.Map<CreateBrandDto>(createdBrand);
+
+                return createdBrandDto;
             }
         }
     }
