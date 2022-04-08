@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Cars\Queries\" />
     <Folder Include="Features\Models\Commands\" />
     <Folder Include="Features\Models\Dtos\" />
     <Folder Include="Features\Models\Models\" />
