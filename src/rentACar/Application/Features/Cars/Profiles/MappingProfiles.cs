@@ -24,7 +24,9 @@ namespace Application.Features.Cars.Profiles
             CreateMap<Car, DeleteCarCommand>().ReverseMap();
             CreateMap<Car, UpdateCarDto>().ReverseMap();
             CreateMap<Car, UpdateCarCommand>().ReverseMap();
-            CreateMap<Car, CarListDto>().ReverseMap();
+            CreateMap<Car, CarListDto>()
+                .ForMember(dest => dest.ColorName, opt => opt.MapFrom(c => c.Color.Name))
+                .ForMember(dest => dest.ModelName, opt => opt.MapFrom(c => c.Model.Name));
             CreateMap<IPaginate<Car>, CarListModel>().ReverseMap();
         }
     }
