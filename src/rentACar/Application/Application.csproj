@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Colors\Rules\" />
-    <Folder Include="Features\Colors\Queries\" />
     <Folder Include="Features\Fuels\Commands\UpdateFuel\" />
     <Folder Include="Features\Fuels\Commands\DeleteFuel\" />
     <Folder Include="Features\Fuels\Commands\CreateFuel\" />
