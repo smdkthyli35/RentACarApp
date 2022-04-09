@@ -13,7 +13,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Colors\Rules\" />
-    <Folder Include="Features\Fuels\Queries\" />
     <Folder Include="Features\Fuels\Rules\" />
     <Folder Include="Features\Models\Rules\" />
     <Folder Include="Features\Transmissions\Commands\CreateTransmission\" />
