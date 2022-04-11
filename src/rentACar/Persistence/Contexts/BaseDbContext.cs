@@ -1,4 +1,5 @@
-﻿using Domain.Entities;
+﻿using Core.Security.Entities;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Mappings;
 using System;
@@ -17,6 +18,9 @@ namespace Persistence.Contexts
         public DbSet<Color> Colors { get; set; }
         public DbSet<Fuel> Fuels { get; set; }
         public DbSet<Transmission> Transmissions { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
 
         public BaseDbContext(DbContextOptions<BaseDbContext> options) : base(options)
         {
