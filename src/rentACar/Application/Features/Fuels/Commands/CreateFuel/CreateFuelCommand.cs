@@ -2,6 +2,7 @@
 using Application.Features.Fuels.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Logging;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Fuels.Commands.CreateFuel
 {
-    public class CreateFuelCommand : IRequest<CreateFuelDto>
+    public class CreateFuelCommand : IRequest<CreateFuelDto>, ILoggableRequest
     {
         public string Name { get; set; }
 

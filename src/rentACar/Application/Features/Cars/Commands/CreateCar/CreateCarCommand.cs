@@ -2,6 +2,7 @@
 using Application.Features.Cars.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Logging;
 using Domain.Entities;
 using Domain.Enums;
 using MediatR;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Cars.Commands.CreateCar
 {
-    public class CreateCarCommand : IRequest<CreateCarDto>
+    public class CreateCarCommand : IRequest<CreateCarDto>, ILoggableRequest
     {
         public int ColorId { get; set; }
         public int ModelId { get; set; }
