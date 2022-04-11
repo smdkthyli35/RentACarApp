@@ -4,6 +4,7 @@ using Application.Features.Colors.Rules;
 using Application.Features.Fuels.Rules;
 using Application.Features.Models.Rules;
 using Application.Features.Transmissions.Rules;
+using Core.Application.Pipelines.Logging;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using MediatR;
@@ -33,6 +34,8 @@ namespace Application
             services.AddScoped<TransmissionBusinessRules>();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+
 
             return services;
         }
