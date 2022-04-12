@@ -1,4 +1,5 @@
 using Application;
+using Core.Application.Pipelines.Caching;
 using Core.Mailing;
 using Core.Mailing.MailkitImplementations;
 using Microsoft.AspNetCore.Builder;
@@ -35,6 +36,8 @@ namespace WebAPI
             services.AddPersistenceServices(Configuration);
             services.AddSingleton<IMailService, MailkitMailService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            services.Configure<CacheSettings>(Configuration.GetSection("CacheSettings"));
 
 
             services.AddControllers();
