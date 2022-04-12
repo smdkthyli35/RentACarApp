@@ -1,6 +1,7 @@
 ﻿using Application.Features.Transmissions.Models;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Core.Application.Requests;
 using MediatR;
 using System;
@@ -12,9 +13,13 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Transmissions.Queries.GetTransmissionList
 {
-    public class GetTransmissionListQuery : IRequest<TransmissionListModel>
+    public class GetTransmissionListQuery : IRequest<TransmissionListModel>, ICachableRequest
     {
         public PageRequest PageRequest { get; set; }
+
+        public bool BypassCache { get; set; }
+        public string CacheKey => "transmissions-list";
+        public TimeSpan? SlidingExpiration { get; set; }
 
         public class GetTransmissionListQueryHandler : IRequestHandler<GetTransmissionListQuery, TransmissionListModel>
         {

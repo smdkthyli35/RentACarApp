@@ -1,6 +1,7 @@
 ﻿using Application.Features.Fuels.Models;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Core.Application.Requests;
 using MediatR;
 using System;
@@ -12,9 +13,13 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Fuels.Queries.GetFuelList
 {
-    public class GetFuelListQuery : IRequest<FuelListModel>
+    public class GetFuelListQuery : IRequest<FuelListModel>, ICachableRequest
     {
         public PageRequest PageRequest { get; set; }
+
+        public bool BypassCache { get; set; }
+        public string CacheKey => "fuels-list";
+        public TimeSpan? SlidingExpiration { get; set; }
 
         public class GetFuelListQueryHandler : IRequestHandler<GetFuelListQuery, FuelListModel>
         {

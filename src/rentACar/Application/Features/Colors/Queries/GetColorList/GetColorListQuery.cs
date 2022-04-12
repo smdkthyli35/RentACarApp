@@ -1,6 +1,7 @@
 ﻿using Application.Features.Colors.Models;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using MediatR;
@@ -13,9 +14,13 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Colors.Queries.GetColorList
 {
-    public class GetColorListQuery : IRequest<ColorListModel>
+    public class GetColorListQuery : IRequest<ColorListModel>, ICachableRequest
     {
         public PageRequest PageRequest { get; set; }
+
+        public bool BypassCache { get; set; }
+        public string CacheKey => "colors-list";
+        public TimeSpan? SlidingExpiration { get; set; }
 
         public class GetColorListQueryHandler : IRequestHandler<GetColorListQuery, ColorListModel>
         {

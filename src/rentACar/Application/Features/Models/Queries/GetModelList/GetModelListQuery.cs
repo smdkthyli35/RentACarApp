@@ -1,6 +1,7 @@
 ﻿using Application.Features.Models.Models;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Caching;
 using Core.Application.Requests;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -13,9 +14,15 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Models.Queries.GetModelList
 {
-    public class GetModelListQuery : IRequest<ModelListModel>
+    public class GetModelListQuery : IRequest<ModelListModel>, ICachableRequest
     {
         public PageRequest PageRequest { get; set; }
+
+        public bool BypassCache { get; set; }
+
+        public string CacheKey => "models-list";
+
+        public TimeSpan? SlidingExpiration { get; set; }
 
         public class GetModelListQueryHandler : IRequestHandler<GetModelListQuery, ModelListModel>
         {
