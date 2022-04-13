@@ -16,7 +16,7 @@ namespace Application.Features.CorporateCustomers.Rules
         {
             _corporateCustomerRepository = corporateCustomerRepository;
         }
-
+        
         public async Task CompanyNameCanNotBeDuplicatedWhenInserted(string companyName)
         {
             var result = await _corporateCustomerRepository.GetListAsync(c => c.CompanyName == companyName);
