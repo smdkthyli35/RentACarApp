@@ -12,7 +12,7 @@ namespace Domain.Entities
     {
         public Car()
         {
-
+            
         }
 
         public Car(int id, int colorId, int modelId, string plate, short modelYear, CarState carState) : this()
