@@ -21,10 +21,4 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\InvidualCustomers\Rules\" />
-    <Folder Include="Features\InvidualCustomers\Profiles\" />
-    <Folder Include="Features\InvidualCustomers\Queries\" />
-  </ItemGroup>
-
 </Project>
