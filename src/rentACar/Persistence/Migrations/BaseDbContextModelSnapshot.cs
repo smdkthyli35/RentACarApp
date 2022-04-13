@@ -149,6 +149,23 @@ namespace Persistence.Migrations
                     b.ToTable("Colors");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
+                });
+
             modelBuilder.Entity("Domain.Entities.Fuel", b =>
                 {
                     b.Property<int>("Id")
@@ -223,6 +240,45 @@ namespace Persistence.Migrations
                     b.ToTable("Transmissions");
                 });
 
+            modelBuilder.Entity("Domain.Entities.CorporateCustomer", b =>
+                {
+                    b.HasBaseType("Domain.Entities.Customer");
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("TaxNumber")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.ToTable("CorporateCustomers");
+                });
+
+            modelBuilder.Entity("Domain.Entities.InvidualCustomer", b =>
+                {
+                    b.HasBaseType("Domain.Entities.Customer");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("NationalIdentity")
+                        .IsRequired()
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
+
+                    b.ToTable("InvidualCustomers");
+                });
+
             modelBuilder.Entity("Domain.Entities.Car", b =>
                 {
                     b.HasOne("Domain.Entities.Color", "Color")
@@ -267,6 +323,24 @@ namespace Persistence.Migrations
                     b.Navigation("Fuel");
 
                     b.Navigation("Transmission");
+                });
+
+            modelBuilder.Entity("Domain.Entities.CorporateCustomer", b =>
+                {
+                    b.HasOne("Domain.Entities.Customer", null)
+                        .WithOne()
+                        .HasForeignKey("Domain.Entities.CorporateCustomer", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Entities.InvidualCustomer", b =>
+                {
+                    b.HasOne("Domain.Entities.Customer", null)
+                        .WithOne()
+                        .HasForeignKey("Domain.Entities.InvidualCustomer", "Id")
+                        .OnDelete(DeleteBehavior.ClientCascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Domain.Entities.Brand", b =>

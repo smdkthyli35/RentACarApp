@@ -16,6 +16,7 @@ namespace Persistence.Mappings
             builder.HasKey(c => c.Id);
             builder.Property(c => c.Id).ValueGeneratedOnAdd();
             builder.Property(c => c.Email).HasMaxLength(100).IsRequired();
+            builder.ToTable("Customers");
         }
     }
 }
