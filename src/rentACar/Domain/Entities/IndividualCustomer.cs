@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class InvidualCustomer : Customer
+    public class IndividualCustomer : Customer
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string NationalIdentity { get; set; }
 
-        public InvidualCustomer(int id, string email, string firstName, string lastName, string nationalIdentity) : this()
+        public IndividualCustomer(int id, string email, string firstName, string lastName, string nationalIdentity) : this()
         {
             FirstName = firstName;
             LastName = lastName;
@@ -22,7 +22,7 @@ namespace Domain.Entities
             Email = email;
         }
 
-        public InvidualCustomer()
+        public IndividualCustomer()
         {
 
         }

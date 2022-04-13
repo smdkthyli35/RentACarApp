@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.InvidualCustomers.Dtos
+namespace Application.Features.IndividualCustomers.Dtos
 {
-    public class DeleteInvidualCustomerDto
+    public class DeleteIndividualCustomerDto
     {
         public int Id { get; set; }
     }

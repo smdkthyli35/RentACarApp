@@ -23,7 +23,7 @@ namespace Persistence.Contexts
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CorporateCustomer> CorporateCustomers { get; set; }
-        public DbSet<InvidualCustomer> InvidualCustomers { get; set; }
+        public DbSet<IndividualCustomer> InvidualCustomers { get; set; }
 
         public BaseDbContext(DbContextOptions<BaseDbContext> options) : base(options)
         {
@@ -40,7 +40,7 @@ namespace Persistence.Contexts
             modelBuilder.ApplyConfiguration(new TransmissionMap());
             modelBuilder.ApplyConfiguration(new CustomerMap());
             modelBuilder.ApplyConfiguration(new CorporateCustomerMap());
-            modelBuilder.ApplyConfiguration(new InvidualCustomerMap());
+            modelBuilder.ApplyConfiguration(new IndividualCustomerMap());
         }
     }
 }

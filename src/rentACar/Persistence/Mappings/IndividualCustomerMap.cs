@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Persistence.Mappings
 {
-    public class InvidualCustomerMap : IEntityTypeConfiguration<InvidualCustomer>
+    public class IndividualCustomerMap : IEntityTypeConfiguration<IndividualCustomer>
     {
-        public void Configure(EntityTypeBuilder<InvidualCustomer> builder)
+        public void Configure(EntityTypeBuilder<IndividualCustomer> builder)
         {
             builder.Property(i => i.FirstName).HasMaxLength(50).IsRequired();
             builder.Property(i => i.LastName).HasMaxLength(50).IsRequired();

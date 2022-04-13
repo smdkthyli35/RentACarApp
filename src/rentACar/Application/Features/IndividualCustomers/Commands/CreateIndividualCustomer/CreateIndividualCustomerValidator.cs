@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.InvidualCustomers.Commands.UpdateInvidualCustomer
+namespace Application.Features.IndividualCustomers.Commands.CreateIndividualCustomer
 {
-    public class UpdateInvidualCustomerValidator : AbstractValidator<InvidualCustomer>
+    public class CreateIndividualCustomerValidator : AbstractValidator<IndividualCustomer>
     {
-        public UpdateInvidualCustomerValidator()
+        public CreateIndividualCustomerValidator()
         {
-            RuleFor(i => i.Id).NotEmpty().NotNull();
             RuleFor(i => i.Email).NotEmpty();
             RuleFor(i => i.Email).MaximumLength(100);
             RuleFor(i => i.FirstName).NotEmpty();

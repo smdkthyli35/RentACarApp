@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.InvidualCustomers.Dtos
+namespace Application.Features.IndividualCustomers.Dtos
 {
-    public class CreateInvidualCustomerDto
+    public class IndividualCustomerListDto
     {
         public int Id { get; set; }
         public string Email { get; set; }

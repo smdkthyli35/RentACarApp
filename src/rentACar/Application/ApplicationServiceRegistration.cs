@@ -3,7 +3,7 @@ using Application.Features.Cars.Rules;
 using Application.Features.Colors.Rules;
 using Application.Features.CorporateCustomers.Rules;
 using Application.Features.Fuels.Rules;
-using Application.Features.InvidualCustomers.Rules;
+using Application.Features.IndividualCustomers.Rules;
 using Application.Features.Models.Rules;
 using Application.Features.Transmissions.Rules;
 using Core.Application.Pipelines.Caching;
@@ -41,7 +41,7 @@ namespace Application
             services.AddScoped<ModelBusinessRules>();
             services.AddScoped<TransmissionBusinessRules>();
             services.AddScoped<CorporateCustomerBusinessRules>();
-            services.AddScoped<InvidualCustomerBusinessRules>();
+            services.AddScoped<IndividualCustomerBusinessRules>();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
