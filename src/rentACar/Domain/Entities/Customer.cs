@@ -9,7 +9,11 @@ namespace Domain.Entities
 {
     public class Customer : Entity
     {
-        public string Email { get; set; }
+        public Customer()
+        {
+            Invoices = new HashSet<Invoice>();
+            Rentals = new HashSet<Rental>();
+        }
 
         public Customer(int id, string email) : this()
         {
@@ -17,9 +21,9 @@ namespace Domain.Entities
             Id = id;
         }
 
-        public Customer()
-        {
+        public string Email { get; set; }
 
-        }
+        public virtual ICollection<Invoice> Invoices { get; set; }
+        public virtual ICollection<Rental> Rentals { get; set; }
     }
 }
