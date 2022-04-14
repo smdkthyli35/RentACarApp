@@ -20,6 +20,7 @@ namespace Persistence.Mappings
             builder.Property(c => c.ModelYear).IsRequired();
             builder.HasOne<Color>(c => c.Color).WithMany(c => c.Cars).HasForeignKey(c => c.ColorId);
             builder.HasOne<Model>(c => c.Model).WithMany(m => m.Cars).HasForeignKey(c => c.ModelId);
+            builder.HasOne<City>(c => c.City).WithMany(c => c.Cars).HasForeignKey(c => c.CityId);
             builder.ToTable("Cars");
         }
     }

@@ -11,7 +11,7 @@ namespace Domain.Entities
     {
         public AdditionalService()
         {
-
+            RentalAdditionalServices = new HashSet<RentalAdditionalService>();
         }
 
         public AdditionalService(int id, string name, decimal dailyPrice) : base(id)
@@ -22,5 +22,7 @@ namespace Domain.Entities
 
         public string Name { get; set; }
         public decimal DailyPrice { get; set; }
+
+        public virtual ICollection<RentalAdditionalService> RentalAdditionalServices { get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace Domain.Entities
             RentalAdditionalServices = new HashSet<RentalAdditionalService>();
         }
 
-        public Rental(int id, int carId, int customerId, DateTime startDate, DateTime endDate, DateTime? returnDate, int rentedCityId, int? deliveryCityId, int rentStartKilometer, int? rentEndKilometer) : this()
+        public Rental(int id, int carId, int customerId, DateTime startDate, DateTime endDate, DateTime? returnDate, string rentedCity, string deliveryCity, int rentStartKilometer, int? rentEndKilometer) : this()
         {
             Id = id;
             CarId = carId;
@@ -22,8 +22,8 @@ namespace Domain.Entities
             StartDate = startDate;
             EndDate = endDate;
             ReturnDate = returnDate;
-            RentedCityId = rentedCityId;
-            DeliveryCityId = deliveryCityId;
+            RentedCity = rentedCity;
+            DeliveryCity = deliveryCity;
             RentStartKilometer = rentStartKilometer;
             RentEndKilometer = rentEndKilometer;
         }
@@ -33,8 +33,8 @@ namespace Domain.Entities
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public DateTime? ReturnDate { get; set; }
-        public int RentedCityId { get; set; }
-        public int? DeliveryCityId { get; set; }
+        public string RentedCity { get; set; }
+        public string DeliveryCity { get; set; }
         public int RentStartKilometer { get; set; }
         public int? RentEndKilometer { get; set; }
 

@@ -48,6 +48,12 @@ namespace Persistence.Contexts
             modelBuilder.ApplyConfiguration(new CustomerMap());
             modelBuilder.ApplyConfiguration(new CorporateCustomerMap());
             modelBuilder.ApplyConfiguration(new IndividualCustomerMap());
+            modelBuilder.ApplyConfiguration(new AdditionalServiceMap());
+            modelBuilder.ApplyConfiguration(new CarDamageMap());
+            modelBuilder.ApplyConfiguration(new RentalAdditionalServiceMap());
+            modelBuilder.ApplyConfiguration(new RentalMap());
+            modelBuilder.ApplyConfiguration(new CityMap());
+            modelBuilder.ApplyConfiguration(new InvoiceMap());
         }
     }
 }

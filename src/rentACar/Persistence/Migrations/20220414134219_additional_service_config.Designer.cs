@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Contexts;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    partial class BaseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220414134219_additional_service_config")]
+    partial class additional_service_config
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -176,9 +178,7 @@ namespace Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("DamageDetail")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -195,9 +195,7 @@ namespace Persistence.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -269,9 +267,7 @@ namespace Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("InvoiceNo")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("RentalDayCount")
                         .HasColumnType("real");
@@ -342,16 +338,11 @@ namespace Persistence.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CityId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("DeliveryCity")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int?>("DeliveryCityId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -362,10 +353,8 @@ namespace Persistence.Migrations
                     b.Property<int>("RentStartKilometer")
                         .HasColumnType("int");
 
-                    b.Property<string>("RentedCity")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("RentedCityId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("ReturnDate")
                         .HasColumnType("datetime2");
@@ -376,8 +365,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CarId");
-
-                    b.HasIndex("CityId");
 
                     b.HasIndex("CustomerId");
 
@@ -545,14 +532,10 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.Rental", b =>
                 {
                     b.HasOne("Domain.Entities.Car", "Car")
-                        .WithMany("Rentals")
+                        .WithMany()
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Domain.Entities.City", null)
-                        .WithMany("Rentals")
-                        .HasForeignKey("CityId");
 
                     b.HasOne("Domain.Entities.Customer", "Customer")
                         .WithMany("Rentals")
@@ -568,7 +551,7 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.RentalAdditionalService", b =>
                 {
                     b.HasOne("Domain.Entities.AdditionalService", "AdditionalService")
-                        .WithMany("RentalAdditionalServices")
+                        .WithMany()
                         .HasForeignKey("AdditionalServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -602,11 +585,6 @@ namespace Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Entities.AdditionalService", b =>
-                {
-                    b.Navigation("RentalAdditionalServices");
-                });
-
             modelBuilder.Entity("Domain.Entities.Brand", b =>
                 {
                     b.Navigation("Models");
@@ -615,15 +593,11 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.Entities.Car", b =>
                 {
                     b.Navigation("CarDamages");
-
-                    b.Navigation("Rentals");
                 });
 
             modelBuilder.Entity("Domain.Entities.City", b =>
                 {
                     b.Navigation("Cars");
-
-                    b.Navigation("Rentals");
                 });
 
             modelBuilder.Entity("Domain.Entities.Color", b =>

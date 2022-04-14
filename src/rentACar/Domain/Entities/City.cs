@@ -12,6 +12,7 @@ namespace Domain.Entities
         public City()
         {
             Cars = new HashSet<Car>();
+            Rentals = new HashSet<Rental>();
         }
 
         public City(int id, string name) : this()
@@ -22,5 +23,6 @@ namespace Domain.Entities
 
         public string Name { get; set; }
         public virtual ICollection<Car> Cars { get; set; }
+        public virtual ICollection<Rental> Rentals { get; set; }
     }
 }
