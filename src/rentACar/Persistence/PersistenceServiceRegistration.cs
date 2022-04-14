@@ -16,7 +16,7 @@ namespace Persistence
     {
         public static IServiceCollection AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("rentACarConnectionString")));
+            services.AddDbContext<BaseDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("rentACarConnectionString"), b => b.MigrationsAssembly("Persistence")));
 
             services.AddScoped<IBrandRepository, BrandRepository>();
             services.AddScoped<ICarRepository, CarRepository>();
@@ -24,6 +24,10 @@ namespace Persistence
             services.AddScoped<IFuelRepository, FuelRepository>();
             services.AddScoped<IModelRepository, ModelRepository>();
             services.AddScoped<ITransmissionRepository, TransmissionRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IIndividualCustomerRepository, IndividualCustomerRepository>();
+            services.AddScoped<ICorporateCustomerRepository, CorporateCustomerRepository>();
 
             return services;
         }

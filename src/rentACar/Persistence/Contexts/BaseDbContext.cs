@@ -24,6 +24,13 @@ namespace Persistence.Contexts
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CorporateCustomer> CorporateCustomers { get; set; }
         public DbSet<IndividualCustomer> InvidualCustomers { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<AdditionalService> AdditionalServices { get; set; }
+        public DbSet<RentalAdditionalService> RentalAdditionalServices { get; set; }
+        public DbSet<CarDamage> CarDamages { get; set; }
+
 
         public BaseDbContext(DbContextOptions<BaseDbContext> options) : base(options)
         {
