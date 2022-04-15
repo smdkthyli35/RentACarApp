@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\AdditionalServices\Commands\" />
     <Folder Include="Features\AdditionalServices\Rules\" />
     <Folder Include="Features\AdditionalServices\Profiles\" />
     <Folder Include="Features\AdditionalServices\Queries\" />
