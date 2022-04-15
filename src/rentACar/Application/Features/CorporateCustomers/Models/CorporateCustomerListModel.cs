@@ -1,4 +1,5 @@
 ﻿using Application.Features.Customers.Dtos;
+using Core.Persistence.Paging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.CorporateCustomers.Models
 {
-    public class CorporateCustomerListModel
+    public class CorporateCustomerListModel : BasePageableModel
     {
         public IList<CorporateCustomerListDto> Items { get; set; }
     }
