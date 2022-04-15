@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Cities\Commands\" />
     <Folder Include="Features\Cities\Rules\" />
     <Folder Include="Features\Cities\Profiles\" />
     <Folder Include="Features\Cities\Queries\" />
