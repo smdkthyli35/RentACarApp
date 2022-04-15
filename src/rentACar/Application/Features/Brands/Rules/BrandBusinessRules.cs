@@ -22,7 +22,7 @@ namespace Application.Features.Brands.Rules
             var result = await _brandRepository.GetListAsync(b => b.Name == name);
             if (result.Items.Any())
             {
-                throw new BusinessException("Bu isimde bir marka adı bulunmamaktadır!");
+                throw new BusinessException("Bu marka adı daha önceden eklenmiş. Lütfen farklı bir marka adı giriniz.");
             }
         }
     }
