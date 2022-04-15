@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\CarDamages\Commands\" />
     <Folder Include="Features\CarDamages\Rules\" />
     <Folder Include="Features\CarDamages\Queries\" />
     <Folder Include="Features\CarDamages\Profiles\" />
