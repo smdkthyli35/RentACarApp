@@ -21,14 +21,4 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\CorporateCustomers\Queries\GetCorporateCustomerById\" />
-    <Folder Include="Features\Fuels\Queries\GetFuelById\" />
-    <Folder Include="Features\IndividualCustomers\Queries\GetIndividualCustomerById\" />
-    <Folder Include="Features\Invoices\Queries\GetInvoiceById\" />
-    <Folder Include="Features\Models\Queries\GetModelById\" />
-    <Folder Include="Features\Rentals\Queries\GetRentalById\" />
-    <Folder Include="Features\Transmissions\Queries\GetTransmissionById\" />
-  </ItemGroup>
-
 </Project>

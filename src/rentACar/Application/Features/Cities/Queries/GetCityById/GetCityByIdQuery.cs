@@ -32,7 +32,7 @@ namespace Application.Features.Cities.Queries.GetCityById
             {
                 var cityIsTheExists = await _cityRepository.GetAsync(b => b.Id == request.Id);
                 if (cityIsTheExists is null)
-                    throw new BusinessException($"{request.Id} id'li böyle şehir marka bulunamadı!");
+                    throw new BusinessException($"{request.Id} id'li böyle şehir bilgisi bulunamadı!");
                 else
                 {
                     CityDto cityDto = _mapper.Map<CityDto>(cityIsTheExists);

@@ -31,7 +31,7 @@ namespace Application.Features.AdditionalServices.Queries.GetAdditionalServiceBy
             {
                 var additionalServiceIsTheExists = await _additionalServiceRepository.GetAsync(a => a.Id == request.Id);
                 if (additionalServiceIsTheExists is null)
-                    throw new BusinessException($"{request.Id} id'li böyle bir ek hizmet bulunamadı!");
+                    throw new BusinessException($"{request.Id} id'li böyle bir ek hizmet bilgisi bulunamadı!");
                 else
                 {
                     AdditionalServiceDto additionalServiceDto = _mapper.Map<AdditionalServiceDto>(additionalServiceIsTheExists);

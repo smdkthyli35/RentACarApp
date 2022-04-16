@@ -32,7 +32,7 @@ namespace Application.Features.CarDamages.Queries.GetCarDamageById
             {
                 var carDamageIsTheExists = await _carDamageRepository.GetAsync(b => b.Id == request.Id);
                 if (carDamageIsTheExists is null)
-                    throw new BusinessException($"{request.Id} id'li bir hasar kaydı bulunamadı!");
+                    throw new BusinessException($"{request.Id} id'li bir araç hasar kaydı bilgisi bulunamadı!");
                 else
                 {
                     CarDamageDto carDamageDto = _mapper.Map<CarDamageDto>(carDamageIsTheExists);

@@ -32,7 +32,7 @@ namespace Application.Features.Colors.Queries.GetColorById
             {
                 var colorIsTheExists = await _colorRepository.GetAsync(b => b.Id == request.Id);
                 if (colorIsTheExists is null)
-                    throw new BusinessException($"{request.Id} id'li böyle bir renk bulunamadı!");
+                    throw new BusinessException($"{request.Id} id'li böyle bir renk bilgisi bulunamadı!");
                 else
                 {
                     ColorDto colorDto = _mapper.Map<ColorDto>(colorIsTheExists);

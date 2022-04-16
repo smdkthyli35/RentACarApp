@@ -32,7 +32,7 @@ namespace Application.Features.Cars.Queries.GetCarById
             {
                 var carIsTheExists = await _carRepository.GetAsync(b => b.Id == request.Id);
                 if (carIsTheExists is null)
-                    throw new BusinessException($"{request.Id} id'li böyle bir araba bulunamadı!");
+                    throw new BusinessException($"{request.Id} id'li böyle bir araba bilgisi bulunamadı!");
                 else
                 {
                     CarDto carDto = _mapper.Map<CarDto>(carIsTheExists);

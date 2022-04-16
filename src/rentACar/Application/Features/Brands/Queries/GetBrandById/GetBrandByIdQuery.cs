@@ -35,7 +35,7 @@ namespace Application.Features.Brands.Queries.GetBrandById
             {
                 var brandIsTheExists = await _brandRepository.GetAsync(b => b.Id == request.Id);
                 if (brandIsTheExists is null)
-                    throw new BusinessException($"{request.Id} id'li böyle bir marka bulunamadı!");
+                    throw new BusinessException($"{request.Id} id'li böyle bir marka bilgisi bulunamadı!");
                 else
                 {
                     BrandDto brandDto = _mapper.Map<BrandDto>(brandIsTheExists);
