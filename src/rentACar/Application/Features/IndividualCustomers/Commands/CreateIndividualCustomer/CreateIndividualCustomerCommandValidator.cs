@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Application.Features.IndividualCustomers.Commands.CreateIndividualCustomer
 {
-    public class CreateIndividualCustomerValidator : AbstractValidator<IndividualCustomer>
+    public class CreateIndividualCustomerCommandValidator : AbstractValidator<IndividualCustomer>
     {
-        public CreateIndividualCustomerValidator()
+        public CreateIndividualCustomerCommandValidator()
         {
             RuleFor(i => i.Email).NotEmpty();
             RuleFor(i => i.Email).MaximumLength(100);

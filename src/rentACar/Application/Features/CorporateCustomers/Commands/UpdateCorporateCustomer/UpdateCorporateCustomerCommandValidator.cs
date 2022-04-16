@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Application.Features.CorporateCustomers.Commands.UpdateCorporateCustomer
 {
-    public class UpdateCorporateCustomerValidator : AbstractValidator<CorporateCustomer>
+    public class UpdateCorporateCustomerCommandValidator : AbstractValidator<CorporateCustomer>
     {
-        public UpdateCorporateCustomerValidator()
+        public UpdateCorporateCustomerCommandValidator()
         {
             RuleFor(c => c.Id).NotEmpty().NotNull();
             RuleFor(c => c.Email).NotEmpty();

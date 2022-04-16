@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Application.Features.CorporateCustomers.Commands.CreateCorporateCustomer
 {
-    public class CreateCorporateCustomerValidator : AbstractValidator<CorporateCustomer>
+    public class CreateCorporateCustomerCommandValidator : AbstractValidator<CorporateCustomer>
     {
-        public CreateCorporateCustomerValidator()
+        public CreateCorporateCustomerCommandValidator()
         {
             RuleFor(c => c.Email).NotEmpty();
             RuleFor(c => c.Email).MaximumLength(100);
