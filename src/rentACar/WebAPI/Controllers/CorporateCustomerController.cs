@@ -1,6 +1,8 @@
 ﻿using Application.Features.CorporateCustomers.Commands.CreateCorporateCustomer;
 using Application.Features.CorporateCustomers.Commands.DeleteCorporateCustomer;
 using Application.Features.CorporateCustomers.Commands.UpdateCorporateCustomer;
+using Application.Features.CorporateCustomers.Dtos;
+using Application.Features.CorporateCustomers.Queries.GetCorporateCustomerById;
 using Application.Features.CorporateCustomers.Queries.GetCorporateCustomerList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +24,13 @@ namespace WebAPI.Controllers
             var query = new GetCorporateCustomerListQuery();
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetCorporateCustomerByIdQuery getCorporateCustomerByIdQuery)
+        {
+            CorporateCustomerDto result = await Mediator.Send(getCorporateCustomerByIdQuery);
             return Ok(result);
         }
 

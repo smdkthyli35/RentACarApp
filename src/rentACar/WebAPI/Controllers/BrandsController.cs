@@ -1,6 +1,7 @@
 ﻿using Application.Features.Brands.Commands.CreateBrand;
 using Application.Features.Brands.Commands.DeleteBrand;
 using Application.Features.Brands.Commands.UpdateBrand;
+using Application.Features.Brands.Dtos;
 using Application.Features.Brands.Queries.GetBrandById;
 using Application.Features.Brands.Queries.GetBrandList;
 using Core.Application.Requests;
@@ -36,7 +37,7 @@ namespace WebAPI.Controllers
         [HttpGet("getbyid/{Id}")]
         public async Task<IActionResult> GetById([FromRoute] GetBrandByIdQuery getBrandByIdQuery)
         {
-            var result = await Mediator.Send(getBrandByIdQuery);
+            BrandDto result = await Mediator.Send(getBrandByIdQuery);
             return Ok(result);
         }
 

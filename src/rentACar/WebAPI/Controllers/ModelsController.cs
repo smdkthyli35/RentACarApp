@@ -1,6 +1,8 @@
 ﻿using Application.Features.Models.Commands.CreateModel;
 using Application.Features.Models.Commands.DeleteModel;
 using Application.Features.Models.Commands.UpdateModel;
+using Application.Features.Models.Dtos;
+using Application.Features.Models.Queries.GetModelById;
 using Application.Features.Models.Queries.GetModelList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +24,13 @@ namespace WebAPI.Controllers
             var query = new GetModelListQuery();
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetModelByIdQuery getModelByIdQuery)
+        {
+            ModelDto result = await Mediator.Send(getModelByIdQuery);
             return Ok(result);
         }
 

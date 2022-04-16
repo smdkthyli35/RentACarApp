@@ -1,6 +1,8 @@
 ﻿using Application.Features.Invoices.Commands.CreateInvoice;
 using Application.Features.Invoices.Commands.DeleteInvoice;
 using Application.Features.Invoices.Commands.UpdateInvoice;
+using Application.Features.Invoices.Dtos;
+using Application.Features.Invoices.Queries.GetInvoiceById;
 using Application.Features.Invoices.Queries.GetInvoiceList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +24,13 @@ namespace WebAPI.Controllers
             var query = new GetInvoiceListQuery();
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetInvoiceByIdQuery getInvoiceByIdQuery)
+        {
+            InvoiceDto result = await Mediator.Send(getInvoiceByIdQuery);
             return Ok(result);
         }
 

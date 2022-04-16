@@ -1,6 +1,8 @@
 ﻿using Application.Features.Rentals.Commands.CreateRental;
 using Application.Features.Rentals.Commands.DeleteRental;
 using Application.Features.Rentals.Commands.UpdateRental;
+using Application.Features.Rentals.Dtos;
+using Application.Features.Rentals.Queries.GetRentalById;
 using Application.Features.Rentals.Queries.GetRentalList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +24,13 @@ namespace WebAPI.Controllers
             var query = new GetRentalListQuery();
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetRentalByIdQuery getRentalByIdQuery)
+        {
+            RentalDto result = await Mediator.Send(getRentalByIdQuery);
             return Ok(result);
         }
 

@@ -1,6 +1,8 @@
 ﻿using Application.Features.Transmissions.Commands.CreateTransmission;
 using Application.Features.Transmissions.Commands.DeleteTransmission;
 using Application.Features.Transmissions.Commands.UpdateTransmission;
+using Application.Features.Transmissions.Dtos;
+using Application.Features.Transmissions.Queries.GetTransmissionById;
 using Application.Features.Transmissions.Queries.GetTransmissionList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +24,13 @@ namespace WebAPI.Controllers
             var query = new GetTransmissionListQuery();
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetTransmissionByIdQuery getTransmissionByIdQuery)
+        {
+            TransmissionDto result = await Mediator.Send(getTransmissionByIdQuery);
             return Ok(result);
         }
 

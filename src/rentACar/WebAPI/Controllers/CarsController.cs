@@ -1,6 +1,8 @@
 ﻿using Application.Features.Cars.Commands.CreateCar;
 using Application.Features.Cars.Commands.DeleteCar;
 using Application.Features.Cars.Commands.UpdateCar;
+using Application.Features.Cars.Dtos;
+using Application.Features.Cars.Queries.GetCarById;
 using Application.Features.Cars.Queries.GetCarList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +24,13 @@ namespace WebAPI.Controllers
             var query = new GetCarListQuery();
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetCarByIdQuery getCarByIdQuery)
+        {
+            CarDto result = await Mediator.Send(getCarByIdQuery);
             return Ok(result);
         }
 

@@ -1,6 +1,8 @@
 ﻿using Application.Features.Colors.Commands.CreateColor;
 using Application.Features.Colors.Commands.DeleteColor;
 using Application.Features.Colors.Commands.UpdateColor;
+using Application.Features.Colors.Dtos;
+using Application.Features.Colors.Queries.GetColorById;
 using Application.Features.Colors.Queries.GetColorList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +24,13 @@ namespace WebAPI.Controllers
             var query = new GetColorListQuery();
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetColorByIdQuery getColorByIdQuery)
+        {
+            ColorDto result = await Mediator.Send(getColorByIdQuery);
             return Ok(result);
         }
 

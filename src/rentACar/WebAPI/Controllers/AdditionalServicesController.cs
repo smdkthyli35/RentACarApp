@@ -1,6 +1,8 @@
 ﻿using Application.Features.AdditionalServices.Commands.CreateAdditionalService;
 using Application.Features.AdditionalServices.Commands.DeleteAdditionalService;
 using Application.Features.AdditionalServices.Commands.UpdateAdditionalService;
+using Application.Features.AdditionalServices.Dtos;
+using Application.Features.AdditionalServices.Queries.GetAdditionalServiceById;
 using Application.Features.AdditionalServices.Queries.GetAdditionalServiceList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -23,6 +25,13 @@ namespace WebAPI.Controllers
             var query = new GetAdditionalServiceListQuery();
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetAdditionalServiceByIdQuery getAdditionalServiceByIdQuery)
+        {
+            AdditionalServiceDto result = await Mediator.Send(getAdditionalServiceByIdQuery);
             return Ok(result);
         }
 

@@ -1,6 +1,8 @@
 ﻿using Application.Features.Cities.Commands.CreateCity;
 using Application.Features.Cities.Commands.DeleteCity;
 using Application.Features.Cities.Commands.UpdateCity;
+using Application.Features.Cities.Dtos;
+using Application.Features.Cities.Queries.GetCityById;
 using Application.Features.Cities.Queries.GetCityList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +24,13 @@ namespace WebAPI.Controllers
             var query = new GetCityListQuery();
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetCityByIdQuery getCityByIdQuery)
+        {
+            CityDto result = await Mediator.Send(getCityByIdQuery);
             return Ok(result);
         }
 

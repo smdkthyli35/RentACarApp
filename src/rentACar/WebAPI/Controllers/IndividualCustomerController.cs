@@ -1,6 +1,8 @@
 ﻿using Application.Features.IndividualCustomers.Commands.CreateIndividualCustomer;
 using Application.Features.IndividualCustomers.Commands.DeleteIndividualCustomer;
 using Application.Features.IndividualCustomers.Commands.UpdateIndividualCustomer;
+using Application.Features.IndividualCustomers.Dtos;
+using Application.Features.IndividualCustomers.Queries.GetIndividualCustomerById;
 using Application.Features.IndividualCustomers.Queries.GetIndividualCustomerList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -30,6 +32,13 @@ namespace WebAPI.Controllers
         {
             var result = await Mediator.Send(createIndividualCustomerCommand);
             return Created("", result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetIndividualCustomerByIdQuery getIndividualCustomerByIdQuery)
+        {
+            IndividualCustomerDto result = await Mediator.Send(getIndividualCustomerByIdQuery);
+            return Ok(result);
         }
 
         [HttpDelete("delete")]

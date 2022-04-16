@@ -1,6 +1,8 @@
 ﻿using Application.Features.CarDamages.Commands.CreateCarDamage;
 using Application.Features.CarDamages.Commands.DeleteCarDamage;
 using Application.Features.CarDamages.Commands.UpdateCarDamage;
+using Application.Features.CarDamages.Dtos;
+using Application.Features.CarDamages.Queries.GetCarDamageById;
 using Application.Features.CarDamages.Queries.GetCarDamageList;
 using Core.Application.Requests;
 using Microsoft.AspNetCore.Http;
@@ -22,6 +24,13 @@ namespace WebAPI.Controllers
             var query = new GetCarDamageListQuery();
             query.PageRequest = pageRequest;
             var result = await Mediator.Send(query);
+            return Ok(result);
+        }
+
+        [HttpGet("getbyid/{Id}")]
+        public async Task<IActionResult> GetById([FromRoute] GetCarDamageByIdQuery getCarDamageByIdQuery)
+        {
+            CarDamageDto result = await Mediator.Send(getCarDamageByIdQuery);
             return Ok(result);
         }
 
