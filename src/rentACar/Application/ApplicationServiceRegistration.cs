@@ -9,6 +9,7 @@ using Application.Features.Fuels.Rules;
 using Application.Features.IndividualCustomers.Rules;
 using Application.Features.Invoices.Rules;
 using Application.Features.Models.Rules;
+using Application.Features.Rentals.Rules;
 using Application.Features.Transmissions.Rules;
 using Core.Application.Pipelines.Caching;
 using Core.Application.Pipelines.Logging;
@@ -50,6 +51,7 @@ namespace Application
             services.AddScoped<AdditionalServiceBusinessRules>();
             services.AddScoped<CarDamageBusinessRules>();
             services.AddScoped<InvoiceBusinessRules>();
+            services.AddScoped<RentalBusinessRules>();
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));

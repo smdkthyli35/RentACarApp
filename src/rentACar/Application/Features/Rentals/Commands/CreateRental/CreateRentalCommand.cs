@@ -1,6 +1,7 @@
 ﻿using Application.Features.Rentals.Dtos;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Logging;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Rentals.Commands.CreateRental
 {
-    public class CreateRentalCommand : IRequest<CreateRentalDto>
+    public class CreateRentalCommand : IRequest<CreateRentalDto>, ILoggableRequest
     {
         public int CarId { get; set; }
         public int CustomerId { get; set; }
