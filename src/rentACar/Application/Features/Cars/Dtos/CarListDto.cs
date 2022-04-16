@@ -13,6 +13,7 @@ namespace Application.Features.Cars.Dtos
         public string ColorName { get; set; }
         public string ModelName { get; set; }
         public string Plate { get; set; }
+        public int Kilometer { get; set; }
         public short ModelYear { get; set; }
         public CarState CarState { get; set; }
     }

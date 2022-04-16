@@ -21,13 +21,4 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\RentalAdditionalServices\Commands\" />
-    <Folder Include="Features\RentalAdditionalServices\Dtos\" />
-    <Folder Include="Features\RentalAdditionalServices\Models\" />
-    <Folder Include="Features\RentalAdditionalServices\Profiles\" />
-    <Folder Include="Features\RentalAdditionalServices\Queries\" />
-    <Folder Include="Features\RentalAdditionalServices\Rules\" />
-  </ItemGroup>
-
 </Project>
