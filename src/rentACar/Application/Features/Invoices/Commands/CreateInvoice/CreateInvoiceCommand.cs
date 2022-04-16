@@ -2,6 +2,7 @@
 using Application.Features.Invoices.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Logging;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Application.Features.Invoices.Commands.CreateInvoice
 {
-    public class CreateInvoiceCommand : IRequest<CreateInvoiceDto>
+    public class CreateInvoiceCommand : IRequest<CreateInvoiceDto>, ILoggableRequest
     {
         public int CustomerId { get; set; }
         public string InvoiceNo { get; set; }
