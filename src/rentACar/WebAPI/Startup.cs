@@ -37,6 +37,9 @@ namespace WebAPI
             services.AddSingleton<IMailService, MailkitMailService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
+
+            services.AddAuthentication();
+
             services.Configure<CacheSettings>(Configuration.GetSection("CacheSettings"));
 
 
@@ -60,6 +63,8 @@ namespace WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseAuthorization();
 
