@@ -1,4 +1,5 @@
 ﻿using Application.Features.Invoices.Dtos;
+using Application.Features.Invoices.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Domain.Entities;
@@ -26,15 +27,19 @@ namespace Application.Features.Invoices.Commands.CreateInvoice
         {
             private readonly IInvoiceRepository _invoiceRepository;
             private readonly IMapper _mapper;
+            private readonly InvoiceBusinessRules _invoiceBusinessRules;
 
-            public CreateInvoiceCommandHandler(IInvoiceRepository invoiceRepository, IMapper mapper)
+            public CreateInvoiceCommandHandler(IInvoiceRepository invoiceRepository, IMapper mapper, InvoiceBusinessRules invoiceBusinessRules)
             {
                 _invoiceRepository = invoiceRepository;
                 _mapper = mapper;
+                _invoiceBusinessRules = invoiceBusinessRules;
             }
 
             public async Task<CreateInvoiceDto> Handle(CreateInvoiceCommand request, CancellationToken cancellationToken)
             {
+                await _invoiceBusinessRules.InvoiceNoCanNotBeDuplicatedWhenInserted(request.InvoiceNo);
+
                 Invoice mappedInvoice = _mapper.Map<Invoice>(request);
                 Invoice createdInvoice = await _invoiceRepository.AddAsync(mappedInvoice);
                 CreateInvoiceDto createInvoiceDto = _mapper.Map<CreateInvoiceDto>(createdInvoice);

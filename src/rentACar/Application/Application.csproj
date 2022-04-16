@@ -22,9 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Invoices\Profiles\" />
-    <Folder Include="Features\Invoices\Queries\" />
-    <Folder Include="Features\Invoices\Rules\" />
     <Folder Include="Features\RentalAdditionalServices\Commands\" />
     <Folder Include="Features\RentalAdditionalServices\Dtos\" />
     <Folder Include="Features\RentalAdditionalServices\Models\" />
