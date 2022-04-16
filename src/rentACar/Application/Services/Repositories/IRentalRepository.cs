@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Services.Repositories
 {
-    public interface IRentalRepsoitory : IAsyncRepository<Rental>
+    public interface IRentalRepository : IAsyncRepository<Rental>
     {
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Application.Features.Rentals.Dtos;
+using Application.Features.Rentals.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.CrossCuttingConcerns.Exceptions;
@@ -28,17 +29,21 @@ namespace Application.Features.Rentals.Commands.UpdateRental
 
         public class UpdateRentalCommandHandler : IRequestHandler<UpdateRentalCommand, UpdateRentalDto>
         {
-            private readonly IRentalRepsoitory _rentalRepsoitory;
+            private readonly IRentalRepository _rentalRepsoitory;
             private readonly IMapper _mapper;
+            private readonly RentalBusinessRules _rentalBusinessRules;
 
-            public UpdateRentalCommandHandler(IRentalRepsoitory rentalRepsoitory, IMapper mapper)
+            public UpdateRentalCommandHandler(IRentalRepository rentalRepsoitory, IMapper mapper, RentalBusinessRules rentalBusinessRules)
             {
                 _rentalRepsoitory = rentalRepsoitory;
                 _mapper = mapper;
+                _rentalBusinessRules = rentalBusinessRules;
             }
 
             public async Task<UpdateRentalDto> Handle(UpdateRentalCommand request, CancellationToken cancellationToken)
             {
+                await _rentalBusinessRules.RentalCanNotBeUpdateWhenThereIsARentedCarInDate(request.Id, request.CarId, request.StartDate, request.EndDate);
+
                 var rentalToBeUpdated = await _rentalRepsoitory.GetAsync(r => r.Id == request.Id);
                 if (rentalToBeUpdated is null)
                     throw new BusinessException("Böyle bir araba kira bilgisi bulunamadı.");

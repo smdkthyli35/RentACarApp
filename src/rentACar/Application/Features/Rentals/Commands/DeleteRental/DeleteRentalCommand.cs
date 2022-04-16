@@ -19,10 +19,10 @@ namespace Application.Features.Rentals.Commands.DeleteRental
 
         public class DeleteRentalCommandHandler : IRequestHandler<DeleteRentalCommand, DeleteRentalDto>
         {
-            private readonly IRentalRepsoitory _rentalRepsoitory;
+            private readonly IRentalRepository _rentalRepsoitory;
             private readonly IMapper _mapper;
 
-            public DeleteRentalCommandHandler(IRentalRepsoitory rentalRepsoitory, IMapper mapper)
+            public DeleteRentalCommandHandler(IRentalRepository rentalRepsoitory, IMapper mapper)
             {
                 _rentalRepsoitory = rentalRepsoitory;
                 _mapper = mapper;

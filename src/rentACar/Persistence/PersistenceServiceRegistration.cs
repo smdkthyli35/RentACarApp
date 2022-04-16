@@ -29,7 +29,7 @@ namespace Persistence
             services.AddScoped<IIndividualCustomerRepository, IndividualCustomerRepository>();
             services.AddScoped<ICorporateCustomerRepository, CorporateCustomerRepository>();
             services.AddScoped<ICityRepository, CityRepository>();
-            services.AddScoped<IRentalRepsoitory, RentalRepository>();
+            services.AddScoped<IRentalRepository, RentalRepository>();
             services.AddScoped<IRentalAdditionalServiceRepository, RentalAdditionalServiceRepository>();
             services.AddScoped<IAdditionalServiceRepository, AdditionalServiceRepository>();
             services.AddScoped<IInvoiceRepository, InvoiceRepository>();

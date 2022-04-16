@@ -28,9 +28,6 @@
     <Folder Include="Features\RentalAdditionalServices\Profiles\" />
     <Folder Include="Features\RentalAdditionalServices\Queries\" />
     <Folder Include="Features\RentalAdditionalServices\Rules\" />
-    <Folder Include="Features\Rentals\Profiles\" />
-    <Folder Include="Features\Rentals\Queries\" />
-    <Folder Include="Features\Rentals\Rules\" />
   </ItemGroup>
 
 </Project>

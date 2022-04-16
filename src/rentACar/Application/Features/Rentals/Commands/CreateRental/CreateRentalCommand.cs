@@ -26,10 +26,10 @@ namespace Application.Features.Rentals.Commands.CreateRental
 
         public class CreateRentalCommandHandler : IRequestHandler<CreateRentalCommand, CreateRentalDto>
         {
-            private readonly IRentalRepsoitory _rentalRepsoitory;
+            private readonly IRentalRepository _rentalRepsoitory;
             private readonly IMapper _mapper;
 
-            public CreateRentalCommandHandler(IRentalRepsoitory rentalRepsoitory, IMapper mapper)
+            public CreateRentalCommandHandler(IRentalRepository rentalRepsoitory, IMapper mapper)
             {
                 _rentalRepsoitory = rentalRepsoitory;
                 _mapper = mapper;
