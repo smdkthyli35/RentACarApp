@@ -29,8 +29,6 @@
     <Folder Include="Features\RentalAdditionalServices\Queries\" />
     <Folder Include="Features\RentalAdditionalServices\Rules\" />
     <Folder Include="Features\Rentals\Commands\" />
-    <Folder Include="Features\Rentals\Dtos\" />
-    <Folder Include="Features\Rentals\Models\" />
     <Folder Include="Features\Rentals\Profiles\" />
     <Folder Include="Features\Rentals\Queries\" />
     <Folder Include="Features\Rentals\Rules\" />
