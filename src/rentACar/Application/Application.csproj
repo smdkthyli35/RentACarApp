@@ -23,8 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Features\Invoices\Commands\" />
-    <Folder Include="Features\Invoices\Dtos\" />
-    <Folder Include="Features\Invoices\Models\" />
     <Folder Include="Features\Invoices\Profiles\" />
     <Folder Include="Features\Invoices\Queries\" />
     <Folder Include="Features\Invoices\Rules\" />
